@@ -17,6 +17,7 @@ $violet: #41478a;
 $darkslategray: #2e383e;
 $dodger-blue: #3498db;
 $blue-teal-gradient: linear-gradient(120deg, #00e4d0, #5983e8);
+$blue-red-gradient: linear-gradient(120deg, #BA3694, #5983e8);;
 $blue-teal-gradient-light: linear-gradient(120deg, rgba(0, 228, 208, 0.7), rgba(89, 131, 232, 0.7));
 $theme-colors: ( primary: #308ee0, secondary: #e5e5e5, success: #00ce68, info: #8862e0, warning: #ffaf00, danger: #e65251, light: #f3f5f6, dark: #424964);
 $colors: ( blue: $blue, indigo: $indigo, purple: $purple, pink: $pink, red: $red, orange: $orange, yellow: $yellow, green: $green, teal: $teal, cyan: $cyan, white: $white, white-smoke: #f3f5f6, gray: $gray-600, gray-light: #8ba2b5, gray-lightest: #f7f7f9, gray-dark: #292b2c);
@@ -107,6 +108,17 @@ $horizontal-2-menu-item-color: $white;
 $horizontal-2-bg: $blue-teal-gradient;
 $horizontal-2-brand-width: 125px;
 ///////// HORIZONTAL MENU 2/////////
+
+
+///////// HORIZONTAL MENU 3/////////
+$horizontal-3-navbar-height: 88px;
+$horizontal-3-navbar-bottom-height:50px;
+$horizontal-3-menu-item-color: $white;
+$horizontal-3-bg: $blue-red-gradient;
+$horizontal-3-brand-width: 125px;
+///////// HORIZONTAL MENU 3/////////
+
+
 ///////// NAVBAR ////////
 $navbar-height: 63px;
 $navbar-light-color: #202339;

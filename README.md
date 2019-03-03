@@ -41,7 +41,7 @@ StarAdmin Free Angular Admin Template/
 $ git clone https://github.com/Istiaq-Hossain-Shawon/angular-7-crud-with-firebase.git
 
 # go into app's directory
-$ cd StarAdmin-Free-Angular-Admin-Template
+$ cd angular-7-crud-with-firebase
 
 # install dependencies
 npm install
@@ -52,3 +52,10 @@ ng serve
 # build for production with minification
 ng build
 ```
+# Port number 4200 is already in use. Type below command in cmd:
+Step 1: Find the connection’s PID
+> netstat -ano | findstr :yourPortNumber
+Then locate the PID (something like 10764)
+Step 2: Kill the process using it’s PID
+> tskill yourPID
+Step 3: Restart your server
