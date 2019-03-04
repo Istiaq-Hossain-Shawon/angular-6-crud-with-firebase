@@ -1,0 +1,209 @@
+<div class="row" [hidden]="submitted">
+  <div class="col-12 grid-margin">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Employee Registration</h4>
+        <form class="form-sample" (ngSubmit)="onSubmit()" #employeeForm="ngForm">
+          <p class="card-description">
+            Personal info
+          </p>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">First Name</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control form-control-sm border-info" id="firstName" required
+                    [(ngModel)]="model.firstName" name="firstName" #firstName="ngModel" />
+                  <div [hidden]="firstName.valid || firstName.pristine" class="alert-danger form-control-sm">
+                    First Name is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Last Name</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control form-control-sm border-info" id="secondName" required
+                    [(ngModel)]="model.secondName" name="secondName" #secondName="ngModel" />
+                  <div [hidden]="secondName.valid || secondName.pristine" class="alert-danger form-control-sm">
+                    Last Name is required
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Gender</label>
+                <div class="col-sm-9">
+                  <select class="form-control form-control-sm border-info" id="gender" required
+                    [(ngModel)]="model.gender" name="gender" #gender="ngModel">
+                    <option *ngFor="let pow of genders" [value]="pow">{{pow}}</option>
+                  </select>
+                  <div [hidden]="gender.valid || gender.pristine" class="alert alert-danger">
+                    Gender is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Date of Birth</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control form-control-sm border-info" placeholder="mm/dd/yyyy"
+                    bsDatepicker id="dateOfBirthday" required [(ngModel)]="model.dateOfBirthday" name="dateOfBirthday"
+                    #dateOfBirthday="ngModel" [(bsValue)]="model.dateOfBirthday" #dp="bsDatepicker" />
+                  <div [hidden]="dateOfBirthday.valid || dateOfBirthday.pristine" class="alert-danger form-control-sm">
+                    Date Of Birthday is required
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Category</label>
+                <div class="col-sm-9">
+                  <select class="form-control form-control-sm border-info" id="category" required
+                    [(ngModel)]="model.category" name="category" #category="ngModel">
+                    <option *ngFor="let pow of Categories" [value]="pow">{{pow}}</option>
+                  </select>
+                  <div [hidden]="category.valid || category.pristine" class="alert alert-danger">
+                    Category is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Membership</label>
+                <div class="col-sm-4" *ngFor="let item of MembershipList">
+                  <div class="form-radio">
+                    <label class="form-check-label">
+                      <input type="radio" class="form-check-input" id="membership" required
+                        [(ngModel)]="model.membership" value="{{item.value}}" name="membership" #membership="ngModel" />
+                      {{item.name}}
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="card-description">
+            Address
+          </p>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Address 1</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control form-control-sm border-info" id="address1" required
+                    [(ngModel)]="model.address1" name="address1" #address1="ngModel" />
+                  <div [hidden]="address1.valid || address1.pristine" class="alert-danger form-control-sm">
+                    Address 1 is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">State</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control form-control-sm border-info" id="state" required
+                    [(ngModel)]="model.state" name="state" #state="ngModel" />
+                  <div [hidden]="state.valid || state.pristine" class="alert-danger form-control-sm">
+                    State is required
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Address 2</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control form-control-sm border-info" id="address2" required
+                    [(ngModel)]="model.address2" name="address2" #address2="ngModel" />
+                  <div [hidden]="address2.valid || address2.pristine" class="alert-danger form-control-sm">
+                    Address 2 is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Postcode</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control form-control-sm border-info" id="postcode" required
+                    [(ngModel)]="model.postcode" name="postcode" #postcode="ngModel" />
+                  <div [hidden]="postcode.valid || postcode.pristine" class="alert-danger form-control-sm">
+                    Postcode is required
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row"  >
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">City</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control form-control-sm border-info" id="city" required
+                    [(ngModel)]="model.city" name="city" #city="ngModel" />
+                  <div [hidden]="city.valid || city.pristine" class="alert-danger form-control-sm">
+                    City is required
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Country</label>
+                <div class="col-sm-9">
+                  <select class="form-control form-control-sm border-info" id="country" required
+                    [(ngModel)]="model.country" name="country" #country="ngModel">
+                    <option *ngFor="let pow of Countries" [value]="pow">{{pow}}</option>
+                  </select>
+                  <div [hidden]="country.valid || country.pristine" class="alert alert-danger">
+                    Country is required
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+              <button type="submit" class="btn btn-success mr-2" [disabled]="!employeeForm.form.valid">Submit</button>
+              <button type="button" class="btn btn-light" (click)="newEmployee(); employeeForm.reset()">New Emplyee</button>
+
+          </div>
+          
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<div class="container" [hidden]="!submitted">
+  <h2>You submitted the following:</h2>
+  <div class="row">
+    <div class="col-xs-3">Name :</div>
+    <div class="col-xs-9"> {{ model.firstName }} {{ model.secondName }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Gender :</div>
+    <div class="col-xs-9"> {{ model.gender }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">DateOfBirthday :</div>
+    <div class="col-xs-9"> {{ model.dateOfBirthday }}</div>
+  </div>
+  <br>
+  <button class="btn btn-primary mr-2" (click)="submitted=false">Edit</button>
+  <button class="btn btn-success" (click)="save(); employeeForm.reset()">Save</button>
+</div>
