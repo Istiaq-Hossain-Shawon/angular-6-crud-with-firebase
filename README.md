@@ -1,10 +1,9 @@
-# StarAdmin Free Angular Admin Template
+# Angular 5 CRUD Using Firebase
+An Angular 6 Sample Project to Implement CRUD Operations - Insert Update and Delete Using Firebase Project.
 
-
-StarAdmin Free Angular Admin Template is a free admin template based on Bootstrap 4. The template is built using the framework NG-Bootstrap.
-
-StarAdmin Free Angular Admin Template is a completely responsive and mobile-first admin template that provides a great foundation for your Angular + Bootstrap project.
-This remarkably flexible and highly customizable template helps you create an amazing UI for your admin panel.
+###### Before Running this Project
+ 1. Install npm packages using 'npm install' command.
+ 2. Configure firebase project with your gmail account. 
 
 ## Demo
 
@@ -17,22 +16,6 @@ Visit: https://www.bootstrapdash.com/demo/star-admin-angular/
 ### What's included
 
 Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
-
-```
-StarAdmin Free Angular Admin Template/
-├── dist/
-├── e2e/
-├── src/
-├── .editorconfig
-├── .gitignore
-├── angular.json
-├── package-lock.json
-├── package.json
-├── README.md
-├── screenshot.jpg
-├── tsconfig.json
-├── tslint.json
-```
 
 ### Usage
 

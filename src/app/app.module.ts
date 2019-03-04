@@ -6,6 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DatepickerModule, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
+import { ToastrModule } from 'ngx-toastr';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
@@ -13,7 +20,10 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
 import { FormsComponent } from './main/forms/forms.component';
-import { PersonalInfoComponent } from './main/personal-info/personal-info.component';
+import { PersonalInfoComponent } from './main/personal-info/personal-info-list/personal-info.component';
+import { PersonalInfoAddComponent } from './main/personal-info/personal-info-add/personal-info-add.component';
+
+import { EmployeeService } from './shared/service/employee.service';
 
 
 @NgModule({
@@ -24,7 +34,8 @@ import { PersonalInfoComponent } from './main/personal-info/personal-info.compon
     FooterComponent,
     DashboardComponent,
     FormsComponent,
-    PersonalInfoComponent
+    PersonalInfoComponent,
+    PersonalInfoAddComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +44,13 @@ import { PersonalInfoComponent } from './main/personal-info/personal-info.compon
     FormsModule,
     NgbModule.forRoot(),
     BsDatepickerModule.forRoot(),
-    DatepickerModule.forRoot() 
+    DatepickerModule.forRoot() ,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
