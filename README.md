@@ -1,4 +1,4 @@
-# Angular 5 CRUD Using Firebase
+# Angular 6 CRUD Using Firebase
 An Angular 6 Sample Project to Implement CRUD Operations - Insert Update and Delete Using Firebase Project.
 
 ###### Before Running this Project
@@ -35,10 +35,12 @@ ng serve
 # build for production with minification
 ng build
 ```
-# Port number 4200 is already in use. Type below command in cmd:
+### Port number 4200 is already in use. Type below command in cmd:
+``` bash
 Step 1: Find the connection’s PID
 > netstat -ano | findstr :yourPortNumber
 Then locate the PID (something like 10764)
 Step 2: Kill the process using it’s PID
 > tskill yourPID
 Step 3: Restart your server
+```
