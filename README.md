@@ -7,9 +7,8 @@ An Angular 6 Sample Project to Implement CRUD Operations - Insert Update and Del
 
 ## Demo
 
-Visit: https://www.bootstrapdash.com/demo/star-admin-angular/
+Visit: https://angular-6-crud-with-firebase.herokuapp.com/personal-info
 
-[![N|Solid](screenshot.jpg)](http://www.bootstrapdash.com/demo/star-admin-angular)
 
 ## Installation
 
