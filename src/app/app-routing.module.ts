@@ -8,13 +8,15 @@ import { DashboardComponent } from './main/dashboard/dashboard.component';
 import { FormsComponent } from './main/forms/forms.component';
 import { PersonalInfoComponent } from './main/personal-info/personal-info-list/personal-info.component';
 import { PersonalInfoAddComponent } from './main/personal-info/personal-info-add/personal-info-add.component';
+import { PersonalInfoEditComponent } from './main/personal-info/personal-info-edit/personal-info-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'forms', component: FormsComponent },
   { path: 'personal-info', component: PersonalInfoComponent },
-  { path: 'personal-info-add', component: PersonalInfoAddComponent }
+  { path: 'personal-info-add', component: PersonalInfoAddComponent },
+  { path: 'personal-info-edit/:id', component: PersonalInfoEditComponent }
 ];
 
 @NgModule({

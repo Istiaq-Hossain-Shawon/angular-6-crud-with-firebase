@@ -4,6 +4,7 @@ import { Employee }    from '../../../shared/model/Employee';
 import { Item } from '../../../shared/model/item';
 import { EmployeeService } from '../../../shared/service/employee.service';
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-personal-info-edit',
@@ -13,7 +14,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class PersonalInfoEditComponent implements OnInit {
   
-  myDateValue: Date;
   powers:any[];
   genders:any[];
   Categories:any[];
@@ -22,29 +22,22 @@ export class PersonalInfoEditComponent implements OnInit {
   model:Employee;
   submitted:boolean;
   employeeList: Employee[];
-  constructor(private employeeService: EmployeeService, private tostr: ToastrService) { }
+  constructor(private route: ActivatedRoute,private employeeService: EmployeeService, private tostr: ToastrService) { 
+    var sub = this.route.params.subscribe(params => {
+      var paramId = +params['id'];
+   });   
+   this.model = new Employee(); 
+   this.submitted = false;
+  }
 
-  ngOnInit() {
+  ngOnInit() {    
     this.powers = ['Really Smart', 'Super Flexible','Super Hot', 'Weather Changer'];
     this.genders = ['Male', 'Female'];
     this.Categories = ['Category1', 'Category2', 'Category3', 'Category4'];
-    this.MembershipList=[ 
-      {name:'Free',value:'Free'},
-      {name:'Professional',value:'Professional'}
-    ];
+    this.MembershipList=[ {name:'Free',value:'Free'},{name:'Professional',value:'Professional'}];
     this.Countries = ['America', 'Italy', 'Russia', 'Britain'];
-    this.model = new Employee();
-    this.submitted = false;
-    var x = this.employeeService.getData();
-    x.snapshotChanges().subscribe(item => {
-      this.employeeList = [];
-      item.forEach(element => {
-        var y = element.payload.toJSON();
-        y["$key"] = element.key;
-        console.log(y);
-        this.employeeList.push(y as Employee);
-      });
-    });
+    this.model=this.employeeService.getDataById();
+    this.model.dateOfBirthday=new Date(this.model.dateOfBirthday);
   }
 
   onSubmit() { 

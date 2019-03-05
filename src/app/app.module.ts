@@ -22,6 +22,7 @@ import { DashboardComponent } from './main/dashboard/dashboard.component';
 import { FormsComponent } from './main/forms/forms.component';
 import { PersonalInfoComponent } from './main/personal-info/personal-info-list/personal-info.component';
 import { PersonalInfoAddComponent } from './main/personal-info/personal-info-add/personal-info-add.component';
+import { PersonalInfoEditComponent } from './main/personal-info/personal-info-edit/personal-info-edit.component';
 
 import { EmployeeService } from './shared/service/employee.service';
 
@@ -35,7 +36,9 @@ import { EmployeeService } from './shared/service/employee.service';
     DashboardComponent,
     FormsComponent,
     PersonalInfoComponent,
-    PersonalInfoAddComponent
+    PersonalInfoAddComponent,
+    PersonalInfoEditComponent
+
   ],
   imports: [
     BrowserModule,

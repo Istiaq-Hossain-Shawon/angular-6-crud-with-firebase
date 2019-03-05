@@ -177,8 +177,8 @@
           </div>
           <div class="col-sm-12">
               <button type="submit" class="btn btn-success mr-2" [disabled]="!employeeForm.form.valid">Submit</button>
-              <button type="button" class="btn btn-light" (click)="newEmployee(); employeeForm.reset()">New Emplyee</button>
-
+              <button type="button" class="btn btn-danger  mr-2" (click)="newEmployee(); employeeForm.reset()">Clear</button>
+              <a  class="btn btn-primary"  routerLink='/personal-info' >Back</a>
           </div>
           
         </form>
