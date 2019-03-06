@@ -13,24 +13,23 @@ import {Router} from "@angular/router";
 export class PersonalInfoComponent implements OnInit {
   
   employeeList: Employee[];
+  arr: Employee[] = [];
   constructor(private employeeService: EmployeeService, private tostr: ToastrService,private router: Router) { }
 
   ngOnInit() {
     
-    var x = this.employeeService.getData();
-    x.snapshotChanges().subscribe(item => {
-      this.employeeList = [];
-      item.forEach(element => {
-        var y = element.payload.toJSON();
-        y["$key"] = element.key;
-        console.log(y);
-        this.employeeList.push(y as Employee);
-      });
-    });
-  }
-  onEdit(emp: Employee) {
-    this.employeeService.selectedEmployee = Object.assign({}, emp);
-    this.router.navigate(['/personal-info-edit', emp.$key])
+    this.employeeService.getData().subscribe(
+      (user: Employee[]) => {
+      this.employeeList = user;
+      console.log(this.employeeList)}
+    );
+
+  
+  } 
+  onEdit(emp: string) {
+    debugger;
+    //this.employeeService.selectedEmployee = Object.assign({}, emp);
+    this.router.navigate(['/personal-info-edit', emp])
   }
   onDelete(key: string) {
     if (confirm('Are you sure to delete this record ?') == true) {

@@ -53,8 +53,8 @@
                 <label class="col-sm-3 col-form-label">Date of Birth</label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control form-control-sm border-info" placeholder="mm/dd/yyyy"
-                    bsDatepicker id="dateOfBirthday" required [(ngModel)]="model.dateOfBirthday" name="dateOfBirthday"
-                    #dateOfBirthday="ngModel" [(bsValue)]="model.dateOfBirthday" #dp="bsDatepicker" />
+                    bsDatepicker id="dateOfBirthday" required [(ngModel)]="employeeDateOfBirth" name="dateOfBirthday"
+                    #dateOfBirthday="ngModel" [(bsValue)]="employeeDateOfBirth" #dp="bsDatepicker" />
                   <div [hidden]="dateOfBirthday.valid || dateOfBirthday.pristine" class="alert-danger form-control-sm">
                     Date Of Birthday is required
                   </div>
@@ -201,7 +201,7 @@
   </div>
   <div class="row">
     <div class="col-xs-3">DateOfBirthday :</div>
-    <div class="col-xs-9"> {{ model.dateOfBirthday }}</div>
+    <div class="col-xs-9"> {{ employeeDateOfBirth }}</div>
   </div>
   <br>
   <button class="btn btn-primary mr-2" (click)="submitted=false">Edit</button>

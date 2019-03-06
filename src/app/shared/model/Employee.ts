@@ -1,9 +1,9 @@
-export class Employee {
-  $key : string;
+export class Employee {  
+  id:string;
    firstName: string;
    secondName: string;
    gender: string;
-   dateOfBirthday: Date;
+   dateOfBirthday: string;
    category: string;
    membership: string;
    address1: string;

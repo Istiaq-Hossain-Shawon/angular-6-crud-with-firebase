@@ -22,6 +22,7 @@ export class PersonalInfoAddComponent implements OnInit {
   model:Employee;
   submitted:boolean;
   employeeList: Employee[];
+  employeeDateOfBirth:Date
   constructor(private employeeService: EmployeeService, private tostr: ToastrService) { }
 
   ngOnInit() {
@@ -35,28 +36,14 @@ export class PersonalInfoAddComponent implements OnInit {
     this.Countries = ['America', 'Italy', 'Russia', 'Britain'];
     this.model = new Employee();
     this.submitted = false;
-    var x = this.employeeService.getData();
-    x.snapshotChanges().subscribe(item => {
-      this.employeeList = [];
-      item.forEach(element => {
-        var y = element.payload.toJSON();
-        y["$key"] = element.key;
-        console.log(y);
-        this.employeeList.push(y as Employee);
-      });
-    });
   }
 
   onSubmit() { 
     this.submitted = true; 
   }
   save() { 
-    if (this.model.$key == null){
-      this.employeeService.insertEmployee(this.model);
-    }    
-    else{
-      this.employeeService.updateEmployee(this.model);
-    }
+    this.model.dateOfBirthday=this.employeeDateOfBirth.toLocaleDateString();
+    this.employeeService.insertEmployee(this.model);
     this.tostr.success('Submitted Succcessfully', 'Employee Register');
     this.model = new Employee();
     this.submitted = false; 

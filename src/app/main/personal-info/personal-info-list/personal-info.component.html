@@ -11,10 +11,10 @@
           <td>{{employee.dateOfBirthday}}</td>
           <td>{{employee.address1}}</td>
           <td>
-            <a class="btn" (click)="onEdit(employee)">
+            <a class="btn" (click)="onEdit(employee.id)">
               <i class="fa fa-pencil-square-o"></i>
             </a>
-            <a class="btn" (click)="onDelete(employee.$key)">
+            <a class="btn" (click)="onDelete(employee.id)">
               <i class="fa fa-trash-o"></i>
             </a>
           </td>

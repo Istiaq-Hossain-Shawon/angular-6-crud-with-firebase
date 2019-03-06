@@ -1,67 +1,72 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database'
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
 import { Employee} from '../model/Employee';
-
 @Injectable()
 export class EmployeeService {
-  employeeList: AngularFireList<any>;
-  selectedEmployee: Employee = new Employee();
-  constructor(private firebase :AngularFireDatabase ) { }
+  userscollection: AngularFirestoreCollection<Employee>;
+  users: Observable<Employee[]>;
+  userDoc: AngularFirestoreDocument<Employee>;
+  constructor(public _afs: AngularFirestore) {
+    this.userscollection = this._afs.collection('employees', x => x.orderBy('firstName', 'asc'));
+    this.users = this.userscollection.snapshotChanges().map(
+      changes => {
+        return changes.map(
+          a => {
+            const data = a.payload.doc.data() as Employee;
+            data.id = a.payload.doc.id;
+            return data;
+          });
 
-  getData(){    
-    this.employeeList = this.firebase.list('employees');
-    return this.employeeList;
+      });
+
   }
-
-  getDataById(){
-    return this.selectedEmployee;
+  getData() {
+    return this.users;
   }
-
-
-  insertEmployee(employee : Employee)
-  {
-    console.log("Emp insert:");
-    console.log(employee);
-
-    this.employeeList.push({
-        firstName: employee.firstName,
-        secondName: employee.secondName,
-        gender: employee.gender,
-        dateOfBirthday: employee.dateOfBirthday.toLocaleString(),
-        category: employee.category,
-        membership: employee.membership,
-        address1: employee.address1,
-        state: employee.state,
-        address2: employee.address2,
-        postcode: employee.postcode,
-        city: employee.city,
-        country: employee.country
+  insertEmployee(employee : Employee) {
+    this._afs.collection('employees').add({
+      firstName: employee.firstName ,
+        secondName: employee.secondName ,
+        gender: employee.gender ,
+        dateOfBirthday: employee.dateOfBirthday ,
+        category: employee.category ,
+        membership: employee.membership ,
+        address1: employee.address1 ,
+        state: employee.state ,
+        address2: employee.address2 ,
+        postcode: employee.postcode ,
+        city: employee.city ,
+        country: employee.country 
     });
   }
-
+  deleteEmployee(id) {
+    this.userDoc = this._afs.doc(`employees/${id}`);
+    this.userDoc.delete();
+  }
+  getDataById(id){
+   this.userDoc = this._afs.doc(`employees/${id}`);   
+   return this.userDoc;
+  }
   updateEmployee(employee : Employee){
-    console.log("Emp insert:");
-    console.log(employee);
-    //Maybe new Date(timestamp)? Or something else?
-    this.employeeList.update(employee.$key,
-      {
-        firstName: employee.firstName,
-      secondName: employee.secondName,
-      gender: employee.gender,
-      dateOfBirthday: employee.dateOfBirthday.toLocaleString(),
-      category: employee.category,
-      membership: employee.membership,
-      address1: employee.address1,
-      state: employee.state,
-      address2: employee.address2,
-      postcode: employee.postcode,
-      city: employee.city,
-      country: employee.country
-      });
+    this.userDoc.update(
+      {       
+        firstName: employee.firstName ,
+        secondName: employee.secondName ,
+        gender: employee.gender ,
+        dateOfBirthday: employee.dateOfBirthday ,
+        category: employee.category ,
+        membership: employee.membership ,
+        address1: employee.address1 ,
+        state: employee.state ,
+        address2: employee.address2 ,
+        postcode: employee.postcode ,
+        city: employee.city ,
+        country: employee.country 
+      }
+    );
   }
 
-  deleteEmployee($key : string){
-    this.employeeList.remove($key);
-  }
 
 }
+
