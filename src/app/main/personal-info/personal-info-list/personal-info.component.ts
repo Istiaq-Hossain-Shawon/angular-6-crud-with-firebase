@@ -14,17 +14,17 @@ export class PersonalInfoComponent implements OnInit {
   
   employeeList: Employee[];
   arr: Employee[] = [];
-  constructor(private employeeService: EmployeeService, private tostr: ToastrService,private router: Router) { }
-
-  ngOnInit() {
-    
+  constructor(private employeeService: EmployeeService, private tostr: ToastrService,private router: Router) {
+debugger;
     this.employeeService.getData().subscribe(
       (user: Employee[]) => {
       this.employeeList = user;
       console.log(this.employeeList)}
     );
 
-  
+   }
+
+  ngOnInit() {
   } 
   onEdit(emp: string) {
     debugger;

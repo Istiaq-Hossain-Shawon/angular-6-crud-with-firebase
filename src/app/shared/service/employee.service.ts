@@ -8,6 +8,9 @@ export class EmployeeService {
   users: Observable<Employee[]>;
   userDoc: AngularFirestoreDocument<Employee>;
   constructor(public _afs: AngularFirestore) {
+
+  }
+  getData() {
     this.userscollection = this._afs.collection('employees', x => x.orderBy('firstName', 'asc'));
     this.users = this.userscollection.snapshotChanges().map(
       changes => {
@@ -19,9 +22,6 @@ export class EmployeeService {
           });
 
       });
-
-  }
-  getData() {
     return this.users;
   }
   insertEmployee(employee : Employee) {
